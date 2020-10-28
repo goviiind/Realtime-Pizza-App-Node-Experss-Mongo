@@ -12,10 +12,11 @@ const expressLayout = require("express-ejs-layouts");
 
 const session  = require("express-session");
 
-
 const mongoose = require("mongoose");
 
 const flash = require("express-flash");
+
+const passport = require("passport");
 
 const MongoDbStore = require("connect-mongo")(session);
 
@@ -50,15 +51,26 @@ app.use(session({
     saveUninitialized : false,
     cookie : {maxAge : 1000 * 60 * 60 * 24} //24 Hours
 }))
+
+//Passport config
+
+const passportInit = require("./app/config/passport")
+passportInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
+
     
 //Assets
+app.use(express.static("public"));
 app.use(flash())
 app.use(express.json())
+app.use(express.urlencoded({extended : false}))
 
 //Global Middleware for session to be available everywhere
 
 app.use((req , res , next) => {
     res.locals.session = req.session
+    res.locals.user = req.user
     next()  //without next() http request will not complete
 })
 
@@ -66,7 +78,7 @@ app.use((req , res , next) => {
 const PORT = process.env.PORT || 3000 ;
 
 
-app.use(express.static("public"));
+
 
 
 
