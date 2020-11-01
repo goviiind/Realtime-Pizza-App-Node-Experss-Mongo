@@ -11,5 +11,5 @@
 
 # Installation
 
-After download or clone run npm install to install all the dependancies.
+After download or clone run <code>npm install</code> to install all the dependancies.
 
