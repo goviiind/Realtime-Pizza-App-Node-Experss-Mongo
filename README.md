@@ -9,3 +9,7 @@
 ![Screenshot (46)](https://user-images.githubusercontent.com/65660930/97798834-d961ee00-1c4f-11eb-9752-32207484939b.png)
 ![Screenshot (48)](https://user-images.githubusercontent.com/65660930/97798838-dc5cde80-1c4f-11eb-9edf-659a1343884c.png)
 
+# Installation
+
+After download or clone run npm install to install all the dependancies.
+
