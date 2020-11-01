@@ -22,13 +22,18 @@ const MongoDbStore = require("connect-mongo")(session);
 
 const Emitter = require("events")
 
+const favicon = require('express-favicon');
+ 
+
 const app = express();
 
+//favicon
+app.use('/favicon.ico', express.static('public/favicon.png'));
 
 //Database Connection
 
-const url = 'mongodb://localhost:27017/Pizza';
-mongoose.connect(url ,{useCreateIndex:true , useNewUrlParser:true,useFindAndModify:true,useUnifiedTopology:true});
+
+mongoose.connect(process.env.MONGO_CONNECTION_URL ,{useCreateIndex:true , useNewUrlParser:true,useFindAndModify:true,useUnifiedTopology:true});
 const connection = mongoose.connection;
 connection.once('open',()=>{
     console.log('Database Connected');
@@ -94,8 +99,11 @@ app.use(expressLayout)
 app.set('views',path.join(__dirname, '/resources/views'));
 app.set('view engine','ejs');
 
-
+//Routes
 require('./routes/web')(app);
+app.use((req,res)=>{
+    res.status(404).render('errors/404')
+})
 
 const server = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
