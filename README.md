@@ -1,4 +1,4 @@
-# Realtime-Pizza-App-Node
+# Realtime-Pizza-App
 
 ## [Visit Site](https://realtime-pizza-app.herokuapp.com/)
 
