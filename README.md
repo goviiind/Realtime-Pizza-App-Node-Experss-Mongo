@@ -1,4 +1,4 @@
-# Realtime-Pizza-App-Node-Experss-Mongo-Socket.io
+# Realtime-Pizza-App-Node
 
 ## [Visit Site](https://realtime-pizza-app.herokuapp.com/)
 
